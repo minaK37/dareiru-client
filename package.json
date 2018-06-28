@@ -1,0 +1,23 @@
+{
+  "name": "delta-dareiru",
+  "version": "1.0.0",
+  "description": "delta-dareiru",
+  "main": "dareiruserver.js",
+  "dependencies": {
+    "express": "*",
+    "socket.io": "*"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node dareiruserver.js",
+    "test": "node dareiruserver.js"
+  },
+  "engines": {
+    "node": "8.11.1"
+  },
+  "author": "mk37",
+  "license": "ISC",
+  "keywords": [
+    "3791"
+  ]
+}

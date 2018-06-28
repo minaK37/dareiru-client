@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Delta_dareiru</title>
+</head>
+<body>
+<h1 id="dareiru">Delta_dareiru?</h1>
+<div id="icon"></div>
+<div id="date"></div>
+<div id="msg">Loading</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script>
+
+//イベントとコールバックの定義
+var socket = io.connect("http://localhost:1234");
+
+
+socket.on("publish", function(data){ addMessage(data.value);});
+
+var msgArea = document.querySelector("#msg");
+
+start();
+
+// サーバ側に接続する
+function start(){
+	socket.emit("connected");
+}
+
+
+// メッセージを表示する
+function addMessage(msg){
+  var domDate = document.getElementById("date");
+  domDate.innerHTML = new Date().toLocaleTimeString();
+	var domMsg = document.getElementById("msg");
+	domMsg.innerHTML = msg;
+	msgArea.appendChild(domMsg);
+
+}
+
+
+
+
+</script>
+</body>
+</html>
