@@ -1,1 +1,1 @@
-web: node chat.js
+web: node dareiruserver.js
