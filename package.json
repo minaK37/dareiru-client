@@ -5,6 +5,7 @@
   "main": "dareiruserver.js",
   "dependencies": {
     "express": "*",
+    "linda": "^1.2.2",
     "socket.io": "*"
   },
   "devDependencies": {},
@@ -19,5 +20,13 @@
   "license": "ISC",
   "keywords": [
     "3791"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/minaK37/dareiruClient.git"
+  },
+  "bugs": {
+    "url": "https://github.com/minaK37/dareiruClient/issues"
+  },
+  "homepage": "https://github.com/minaK37/dareiruClient#readme"
 }
