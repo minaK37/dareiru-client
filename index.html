@@ -13,7 +13,7 @@
 <script>
 
 //イベントとコールバックの定義
-var socket = io.connect("http://localhost:1234");
+var socket = io.connect();
 
 
 socket.on("publish", function(data){ addMessage(data.value);});

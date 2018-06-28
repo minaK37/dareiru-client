@@ -5,6 +5,7 @@ const LindaClient = require("linda").Client;
 const socket = require('socket.io-client').connect('http://linda-server.herokuapp.com');
 const linda = new LindaClient().connect(socket);
 const ts = linda.tuplespace('masuilab');
+var port = process.env.PORT ||1234;
 
 
 linda.io.on('connect', () => {
@@ -16,7 +17,7 @@ server.on("request", function(request, response){
 	response.writeHead(200, {"Content-Type":"text/html"});
 	stream.pipe(response);
 });
-server.listen(process.env.PORT||1234);
+server.listen(port);
 
 // HTTPをWebSocketにUpgradeする
 var io = require("socket.io").listen(server);
