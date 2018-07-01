@@ -32,7 +32,7 @@ io.on("connection",function(socket){
       type: "dareiru"
   },async (err, tuple)  => {
     if(tuple.data.Who==""){
-      	io.emit("publish", {value:"たぶん誰もいませんよ"});
+      	io.emit("publish", {value:"<hr>たぶん誰もいませんよ"});
 
     }
     else{
@@ -40,7 +40,7 @@ io.on("connection",function(socket){
     for (var n in split){
       if(split[n]!=""){
       var iconURL =await icon(split[n]);
-      var htmlImg=`<hr><img src="${iconURL}.png" width="16" height="16">`
+      var htmlImg=`<img src="${iconURL}.png" width="16" height="16">`
       if (urlArray.indexOf(htmlImg) == -1){
       urlArray.push(htmlImg);
     }
@@ -48,7 +48,7 @@ io.on("connection",function(socket){
     str = urlArray.join('');
     var kaigyo = "</br>";
     var value = split.join( kaigyo );
-    dareiru = str+"<hr></br>"+value
+    dareiru = "<hr>"+str+"<hr></br>"+value
 		io.emit("publish", {value:dareiru});
     console.log(dareiru)
   };
