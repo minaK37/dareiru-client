@@ -6,7 +6,8 @@ const socket = require('socket.io-client').connect('http://linda-server.herokuap
 const linda = new LindaClient().connect(socket);
 const ts = linda.tuplespace('masuilab');
 var port = process.env.PORT ||1234;
-
+const axios = require('axios');
+var urlArray=[];
 
 linda.io.on('connect', () => {
     console.log('linda-connect!');
@@ -23,24 +24,53 @@ server.listen(port);
 var io = require("socket.io").listen(server);
 
 // 接続した時に実行される
-io.on("connection", function(socket){
+io.on("connection",function(socket){
 
 	// メッセージ送信のイベント
       ts.watch({
       where: "delta",
       type: "dareiru"
-  }, (err, tuple) => {
+  },async (err, tuple)  => {
     if(tuple.data.Who==""){
       	io.emit("publish", {value:"たぶん誰もいませんよ"});
+
     }
     else{
     split = tuple.data.Who.split( "," );
-    var kaigyo = "\n";
-    var value = split.join( kaigyo );
-		io.emit("publish", {value:value});
+    for (var n in split){
+      if(split[n]!=""){
+      console.log(split[n]);
+      var iconURL =await icon(split[n]);
+      var htmlImg=`<img src=${iconURL} width="16" height="16"></img>`
+      if (urlArray.indexOf(htmlImg) == -1){
+      urlArray.push(htmlImg);
+    }
+    }};
+    console.log(urlArray);
 
+    var kaigyo = "</br>";
+    var value = split.join( kaigyo );
+		io.emit("publish", {value:value+urlArray});
   };
 	});
 
-
 });
+
+
+async function fetchPageIcon (pageTitle) {
+  const res = await axios({
+    method: 'GET',
+    url: `http://scrapbox.io/api/pages/masuilab-dareiru/${pageTitle}`,
+
+
+  })
+  return res.data
+
+};
+
+async function icon (icons) {
+	const Data = await fetchPageIcon(`${icons}`);
+  var url = Data.lines[1].text ;
+  var gyazoURL = url.slice( 1,-1 ) ;
+  return gyazoURL;
+};
