@@ -7,7 +7,6 @@ const linda = new LindaClient().connect(socket);
 const ts = linda.tuplespace('masuilab');
 var port = process.env.PORT ||1234;
 const axios = require('axios');
-var urlArray=[];
 
 linda.io.on('connect', () => {
     console.log('linda-connect!');
@@ -36,6 +35,7 @@ io.on("connection",function(socket){
 
     }
     else{
+    var urlArray=[];
     split = tuple.data.Who.split( "," );
     for (var n in split){
       if(split[n]!=""){
