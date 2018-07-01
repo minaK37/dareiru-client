@@ -39,18 +39,18 @@ io.on("connection",function(socket){
     split = tuple.data.Who.split( "," );
     for (var n in split){
       if(split[n]!=""){
-      console.log(split[n]);
       var iconURL =await icon(split[n]);
-      var htmlImg=`<img src=${iconURL} width="16" height="16"></img>`
+      var htmlImg=`<img src="${iconURL}.png" width="16" height="16">`
       if (urlArray.indexOf(htmlImg) == -1){
       urlArray.push(htmlImg);
     }
     }};
-    console.log(urlArray);
-
+    str = urlArray.join('');
     var kaigyo = "</br>";
     var value = split.join( kaigyo );
-		io.emit("publish", {value:value+urlArray});
+    dareiru = value+str
+		io.emit("publish", {value:dareiru});
+    console.log(dareiru)
   };
 	});
 
