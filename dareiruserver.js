@@ -40,7 +40,7 @@ io.on("connection",function(socket){
     for (var n in split){
       if(split[n]!=""){
       var iconURL =await icon(split[n]);
-      var htmlImg=`<hr><img src="${iconURL}.png" width="16" height="16"><hr></br>`
+      var htmlImg=`<hr><img src="${iconURL}.png" width="16" height="16">`
       if (urlArray.indexOf(htmlImg) == -1){
       urlArray.push(htmlImg);
     }
@@ -48,7 +48,7 @@ io.on("connection",function(socket){
     str = urlArray.join('');
     var kaigyo = "</br>";
     var value = split.join( kaigyo );
-    dareiru = str+value
+    dareiru = str+"<hr></br>"+value
 		io.emit("publish", {value:dareiru});
     console.log(dareiru)
   };
