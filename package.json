@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "*",
     "linda": "^1.2.2",
-    "socket.io": "*"
+    "socket.io": "*",
+    "axios":"*"
   },
   "devDependencies": {},
   "scripts": {
