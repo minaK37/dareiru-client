@@ -6,9 +6,11 @@
 </head>
 <body>
 <h1 id="dareiru">Delta_dareiru?</h1>
-<div id="icon"></div>
 <div id="date"></div>
 <div id="msg">Loading</div>
+
+<p id=imaiku> </p>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 <script>
 
@@ -34,9 +36,9 @@ function addMessage(msg){
   domDate.innerHTML = new Date().toLocaleTimeString();
 	var domMsg = document.getElementById("msg");
 	domMsg.innerHTML = msg;
-	msgArea.appendChild(domMsg);
 
 }
+
 
 
 
