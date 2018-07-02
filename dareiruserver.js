@@ -40,7 +40,7 @@ io.on("connection",function(socket){
     for (var n in split){
       if(split[n]!=""){
       var iconURL =await icon(split[n]);
-      var htmlImg=`<img src="${iconURL}.png" width="16" height="16">`
+      var htmlImg=`<img src="${iconURL}.png" width="24" height="24">`
       if (urlArray.indexOf(htmlImg) == -1){
       urlArray.push(htmlImg);
     }
